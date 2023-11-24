@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./src/css/reset.css">
+  <link rel="stylesheet" href="src/css/estilos.css">
+  <link rel="stylesheet" href="./src/css/responsivo.css">
+
+
+  <title>Clash Royle</title>
+
+</head>
+
+<body id="bodyy">
+  <div class="fundo-video">
+    <video class="video" autoplay loop muted>
+      <source src="./src/video/video-clash.mp4">
+    </video>
+  </div>
+  <div class="container">
+    <h1 class="text-center text-sm-left" id="prime">Vamos conhecer o Clash Royale</h1>
+    <div id="parte1">
+      <form class="form-label" action="" name="formcontato" method="get">
+        <div class="mb-3">
+          <div class="col-lg-3">
+            <label for="nome" class="form-label">Nome:</label>
+            <input type="text" class="form-control" id="titulo" placeholder="Digite seu nome">
+          </div>
+          <br>
+          <div class="col-lg-3">
+            <label for="email" class="form-label">E-mail:</label>
+            <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail">
+          </div>
+          <br>
+        </div>
+        <div class="row">
+          <div class="form-floating">
+            <label for="mensagem" class="form-label">mensagem:</label>
+            <br>
+            <textarea class="form-control" name="mensagem" id="mensagem" rows="4"
+              placeholder="Digite sua mensagem"></textarea>
+            <input type="button" value="Salvar" onclick="salvarContato()">
+          </div>
+        </div>
+        <button type="submit" class="btn-primary"><a href="index.html">Enviar</a></button>
+      </form>
+    </div>
+    <table id="table2">
+      <tr>
+        <td>
+          <div>
+            <img src="src/imagens/barril_barbaro.png" class="img-fluid" alt="Barril de Bárbaro">
+          </div>
+        </td>
+        <td>
+          <div><img src="src/imagens/corredor.png" class="img-fluid" alt="Corredor">
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            <img src="src/imagens/valquiria.png" class="img-fluid" alt="Valquiria">
+          </div>
+        </td>
+        <td>
+          <div>
+            <img src="src/imagens/Principe.png" class="img-fluid" alt="Principe">
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <p class="descricao">Clash Royale é um videojogo de estratégia freemium[1] Também conhecido como o melhor jogo
+      manual
+      do mundo, desenvolvido e publicado pela Supercell, empresa sediada em Helsinki, na Finlândia.[2] O jogo foi
+      lançado
+      em Canadá, Hong Kong, Austrália, Suécia, Noruega, Dinamarca, Islândia, Finlândia, Nova Zelândia, Brasil, Estados
+      Unidos, Reino Unido e muitos outros países para os dispositivos iOS em 4 de janeiro de 2016.[3] O jogo foi lançado
+      para Android[4] para os mesmos países acima mencionados em 16 de fevereiro de 2016.[5] Ambas as plataformas
+      receberam o lançamento mundial do jogo em 2 de março de 2016.</p>
+    <table id="table1">
+      <tr>
+        <th>Nome</th>
+        <th>Mensagem</th>
+        <th>Ações</th>
+      </tr>
+      <div class="retorno">
+        <tbody id="lista"></tbody>
+      </div>
+    </table>
+    <script>
+      function salvarContato() {
+        var titulo = document.getElementById('titulo').value;
+        var mensagem = document.getElementById('mensagem').value;
+
+        var lista_agenda = localStorage.getItem('agenda');
+        if (lista_agenda === null) {
+          lista_agenda = [];
+        } else {
+          lista_agenda = JSON.parse(lista_agenda);
+        }
+        lista_agenda.push({ titulo: titulo, mensagem: mensagem });
+        localStorage.setItem('agenda', JSON.stringify(lista_agenda));
+
+        document.getElementById('titulo').value = '';
+        document.getElementById('mensagem').value = '';
+
+        listarContatos();
+
+      }
+
+      function listarContatos() {
+        var listaContatos = document.getElementById('lista');
+        listaContatos.innerHTML = '';
+
+        var lista_agenda = localStorage.getItem('agenda');
+        if (lista_agenda !== null) {
+          lista_agenda = JSON.parse(lista_agenda);
+
+          lista_agenda.forEach(function (contato, indice) {
+            var tr = document.createElement('tr');
+            var tdNome = document.createElement('td');
+            var tdMensagem = document.createElement('td');
+            var tdAcoes = document.createElement('td');
+            var editarBtn = document.createElement('button');
+            var excluirBtn = document.createElement('button');
+
+            tdNome.textContent = contato.titulo;
+            tdMensagem.textContent = contato.mensagem;
+            editarBtn.textContent = 'Editar';
+            excluirBtn.textContent = 'Excluir';
+
+            editarBtn.onclick = function () {
+              editarContato(indice);
+            };
+
+            excluirBtn.onclick = function () {
+              excluirContato(indice);
+            };
+
+            tdAcoes.appendChild(editarBtn);
+            tdAcoes.appendChild(excluirBtn);
+
+            tr.appendChild(tdNome);
+            tr.appendChild(tdMensagem);
+            tr.appendChild(tdAcoes);
+
+            listaContatos.appendChild(tr);
+          });
+        }
+      }
+
+      function editarContato(indice) {
+        var lista_agenda = JSON.parse(localStorage.getItem('agenda'));
+        var contato = lista_agenda[indice];
+        document.getElementById('titulo').value = contato.titulo;
+        document.getElementById('mensagem').value = contato.mensagem;
+
+        lista_agenda.splice(indice, 1);
+        listarContatos();
+
+        localStorage.setItem('agenda', JSON.stringify(lista_agenda));
+      }
+
+      function excluirContato(indice) {
+        var lista_agenda = JSON.parse(localStorage.getItem('agenda'));
+        lista_agenda.splice(indice, 1);
+        localStorage.setItem('agenda', JSON.stringify(lista_agenda));
+        listarContatos();
+      }
+
+      listarContatos();
+    </script>
+</body>
+
+</html>

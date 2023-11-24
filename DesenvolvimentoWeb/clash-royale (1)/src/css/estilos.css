@@ -1,0 +1,248 @@
+body{
+    font-family: ponppins;
+}
+#bodyy {
+    font-family: ponppins;
+    overflow: hidden;
+    
+}
+
+
+.cabecalho {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.cabecalho .logo {
+    width: 100px;
+}
+
+.cabecalho .menu {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.teste{
+    z-index: 1;
+
+}
+#parte1{
+position: relative;
+right: 150px;
+}
+.fundo-video {
+    
+    position: absolute;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.cabecalho nav li a {
+    font-weight: bold;
+    color: #f70b0b;
+    font-size: 25pix;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: 0, 9s;
+}
+
+.cabecalho nav li a:hover {
+    background-color: rgb(55, 0, 255);
+}
+
+#prime {
+    color: #ffffff;
+    position: relative;
+    left:300px;
+}
+
+.form-label {
+    color: #ffffff;
+}
+.fundo-video::after {
+    content: "";
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,1) 100%);
+}
+
+.form-control {
+    border-radius: 8px;
+    width: 500px;
+    height: 100%;
+    padding: 0 200px;
+}
+.btn-primary {
+    background-color: rgb(236, 41, 15);
+    position: relative;
+    left: 15px;
+}
+.btn-primary :hover{
+    background-color: rgb(97, 3, 219);
+    color: #ffffff;
+    padding: 15xp;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.5s all ease-in-out;
+    transform: scale(1.2);
+}
+
+.conteiner {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    height: calc(100vh-135);
+    padding: 0 30px 30px;
+}
+
+
+.conteiner .imagem-titulo {
+    width: 60%;
+}
+#mensagem{
+    position: relative;
+    left: 30px;
+}
+
+
+
+.descricao {
+    color: rgb(152, 138, 202);
+    width: 45%;
+    font-size: 18px;
+    padding: 0;
+    position: relative;
+    right:140px;
+    text-align: justify;
+    height: 300px;
+    
+    
+}
+
+.conteiner .descricaoo {
+    color: rgb(75, 5, 253);
+    width: 85%;
+    font-size: 18px;
+    padding: 30px 0;
+    position: relative;
+    left: 0;
+ 
+
+    
+}
+
+.conteiner .clash {
+    width: 40%;
+}
+
+.conteiner .butao-trailer {
+    background-color: red;
+    color: #ffffff;
+    padding: 15xp;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.5s all ease-in-out;
+}
+
+.conteiner .butao-trailer:hover {
+    transform: scale(1.2);
+
+}
+
+.video {
+    background-color: rgb(31, 26, 54);
+    position: absolute;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(90deg, rgba(0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 1) 100%);
+
+}
+
+img {
+    height: 59%;
+    width: 59%;
+}
+
+#table2 {
+    border: 0;
+    float: right;
+    position: relative;
+    top: -35px;
+    left:300px;
+}
+
+
+td {
+    width: 200px;
+    height: 150px;
+}
+
+.modal {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(52, 52, 50, 0.749);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.conteudo-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    border-radius: 5px;
+    gap: 15px;
+}
+
+#table1{
+    position: relative;
+    top:-650px;
+    left: 500px;
+    color: #ffffff;
+    font-size: 18px;
+    width: 59%;
+}
+
+.fechar-modal {
+    background-color: #1a1414;
+    color: #3817f0;
+    font-weight: bold;
+    font-size: 20px;
+    width: 40px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.modal iframe {
+    border-width: 0;
+    width: 640px;
+    height: 360px;
+}
+
+.modal.aberto {
+    opacity: 1;
+    visibility: visible;
+}
